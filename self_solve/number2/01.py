@@ -8,4 +8,6 @@ for x in range(2):
                     print(x, y, z, w)
 
 
-# zywx
+# zywx # какой то варинат пробника 2024-2025
+
+
