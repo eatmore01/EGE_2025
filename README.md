@@ -455,11 +455,22 @@ p - вероятность события
 
 **_Аналитическое решение_**
 
+
+
 Букву "С" можно поставить на одно из пяти мест. Для каждого из пяти способов есть 3<sup>4</sup> способов расставить
 оставшиеся буквы (по 3 варианта на каждую из 4 позиций). 5 * 3<sup>4</sup> = 405
 
 **_Решение на Python_**
 
+- repeate это сколкьо букв или сколкьо цифр в числе
+- остальное это возможные буквы или числа
+
+##### examples
+- допустим 8мизначныые и 15тиричные это repeate=8 и  `0123456789abcde` - начинается с нуля, заканчинвается на 9, дальше буквы
+
+- буквы только `ABCX` 5ти буквенное слово -> repeate=5
+
+- допустим 
 [**_Библиотека Itertools_**](https://habr.com/ru/company/otus/blog/529356)
 
 ```python
@@ -471,6 +482,27 @@ for element in words:
     if element.count('С') == 1:
         counter += 1
 print(counter)
+
+
+# ---
+count = 0
+
+for s in product ('0123456789abcde', repeat = 8 ):
+    if s[0] != '0' and s.count('0') == 2:
+        if s.count('a') + s.count('b') + s.count('c') + s.count('d') + s.count('e') < 5:
+            count += 1
+
+print(count)
+# ---
+from itertools import product
+
+count = 0
+
+for s in product ('ABCX', repeat = 5 ):
+    if s.count('X') == 1 and (s[0] == 'X' or s[-1] == 'X'):
+        count += 1
+
+print(count)
 ```
 
 **Ответ:** 405
